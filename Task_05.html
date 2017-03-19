@@ -1,0 +1,97 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 04</title>
+    <link rel="stylesheet" href="Task_05.css">
+</head>
+<body>
+<div id="top">
+    <input type="text" id="data">
+    <button id="leftin">左侧入</button>
+    <button id="rightin">右侧入</button>
+    <button id="leftout">左侧出</button>
+    <button id="rightout">右侧出</button>
+</div>
+<div id="main">
+</div>
+<div id="btn">
+    <button>排序</button>
+</div>
+
+<script>
+    var data = document.getElementById("data");
+    var main = document.getElementById("main");
+    var leftin = document.getElementById("leftin");
+    var rightin = document.getElementById("rightin");
+    var leftout = document.getElementById("leftout");
+    var rightout = document.getElementById("rightout");
+    leftin.onclick = function() {
+        switch (true) {
+            case isNaN(data.value): //判断输入是否是数字
+                alert("请输入数字");
+                data.value = null;
+                return false;
+                break;
+            case data.value.length==0: //判断输入是否为空
+                alert("输入不能为空");
+                data.value = null;
+                return false;
+                break;
+            case data.value<10 || data.value>100: //判断输入数字的范围
+                alert("请输入10~100的数字");
+                data.value = null;
+                return false;
+                break;
+        }
+        var div = document.createElement("div");//建立div节点，并写入数据
+        div.innerHTML = data.value;
+        main.insertBefore(div,main.firstChild);//在第一个子节点前插入数据
+    }
+    rightin.onclick = function(){
+        switch (true) {
+            case isNaN(data.value): //判断输入是否是数字
+                alert("请输入数字");
+                data.value = null;
+                return false;
+                break;
+            case data.value.length==0: //判断输入是否为空
+                alert("输入不能为空");
+                data.value = null;
+                return false;
+                break;
+            case data.value<10 || data.value>100: //判断输入数字的范围
+                alert("请输入10~100的数字");
+                data.value = null;
+                return false;
+                break;
+        }
+        var div = document.createElement("div");//建立div节点，并写入数据
+        div.innerHTML = data.value;
+        main.appendChild(div);//添加子节点，默认从末端添加
+    }
+    leftout.onclick = function(){
+        if (main.hasChildNodes()){    //hasChildNodes()判断是否含有子节点
+            alert(main.firstChild.innerHTML);  //弹出第一个子元素节点内容的提示框
+            main.removeChild(main.firstChild);//移除第一个子节点
+        }
+        else{
+            alert("队列为空");
+            return false;
+        }
+    }
+    rightout.onclick = function(){
+        if (main.hasChildNodes()){
+            alert(main.lastChild.innerHTML);//弹出最后一个子元素节点内容的提示框
+            main.removeChild(main.lastChild);//移除第最后一个子节点
+        }
+        else{
+            alert("队列为空");
+            return false;
+        }
+    }
+
+</script>
+
+</body>
+</html>
